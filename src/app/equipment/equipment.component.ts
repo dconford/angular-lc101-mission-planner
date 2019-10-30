@@ -20,12 +20,28 @@ export class EquipmentComponent implements OnInit {
    cargoHold: object[] = [];
    cargoMass: number = 0;
    maximumAllowedMass: number = 2000;
+   //remainingCargoMass: number = this.maximumAllowedMass - this.cargoMass;
    maxItems: number = 10;
+   //holdNearlyFull: boolean = false;
+   //hideCargo: boolean = false;
+  //  buttonState: boolean[] = [true, true, true];
 
    constructor() { }
 
    ngOnInit() { }
 
+ //  for equipmentItems.length. loop through list and see if this was selected item. see if selecting another one will be 
+ // more than max weight. if so disable button
+//    Bind the disabled attribute to the following conditions:
+
+//    If all of the cargo hold spots are full (cargoHold.length === maxItems), disable the button.
+//    If adding the item to the cargo hold would exceed maximumAllowedMass, disable the button.
+
+// If active, make the button an attractive color.
    // Code your addItem function here:
-   
+   addItem(item: object): boolean {
+      this.cargoHold.push(item);
+      this.cargoMass += item['mass'];
+      return this.maximumAllowedMass - this.cargoMass <= 200;
+   }
 }
