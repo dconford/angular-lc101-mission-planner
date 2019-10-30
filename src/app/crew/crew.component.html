@@ -18,4 +18,7 @@
 
 <input #name type="text"/>
 <label>First mission<input #firstMission type="checkbox"/></label>
-<button (click)="add(name.value, firstMission.checked)">Add</button>
+<!-- *ngIf = "!crew.includes(name) || name.value = ''"  -->
+<button (click)="add(name.value, firstMission.checked); name.value = ''">Add</button>
+<!-- <button *ngIf = "crew.length !==0" (click) = "crew = []">Clear Crew List</button>
+ -->
